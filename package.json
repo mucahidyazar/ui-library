@@ -1,7 +1,7 @@
 {
   "name": "ui-library",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "sideEffects": false,
@@ -22,6 +22,7 @@
   },
   "scripts": {
     "semantic-release": "semantic-release",
+    "commit": "git-cz",
     "cra:start": "react-scripts start",
     "cra:build": "react-scripts build",
     "cra:test": "react-scripts test",
