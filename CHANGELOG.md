@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/mucahidyazar/ui-library/compare/v1.1.0...v1.2.0) (2021-07-11)
+
+
+### Features
+
+* **package.json:** package name ([9ad5a0a](https://github.com/mucahidyazar/ui-library/commit/9ad5a0ac85f665608e03572fd196e1df14b0f715))
+
 # [1.1.0](https://github.com/mucahidyazar/ui-library/compare/v1.0.0...v1.1.0) (2021-07-11)
 
 
