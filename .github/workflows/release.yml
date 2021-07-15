@@ -4,7 +4,7 @@ on:
     branches:
       - main
   pull_request:
-    branches: "*"
+    branches: '*'
 
 jobs:
   # test:
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Install dependencies
-        run: npm run semantic-release
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
