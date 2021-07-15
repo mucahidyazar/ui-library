@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/mucahidyazar/ui-library/compare/v1.2.0...v1.3.0) (2021-07-15)
+
+
+### Features
+
+* **changes:** changes ([66810ac](https://github.com/mucahidyazar/ui-library/commit/66810ac428083fd87222e1239e0a0035ae58fbb7))
+
 # [1.2.0](https://github.com/mucahidyazar/ui-library/compare/v1.1.0...v1.2.0) (2021-07-11)
 
 
