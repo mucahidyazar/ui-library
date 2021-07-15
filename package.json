@@ -118,11 +118,6 @@
     "type": "git",
     "url": "https://github.com/mucahidyazar/ui-library.git"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "release": {
     "branches": [
       "main"
@@ -165,5 +160,10 @@
       ]
     ],
     "preset": "angular"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
