@@ -18,6 +18,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         size={size}
         isFullWidth={isFullWidth}
         type="button"
+        test="test"
         {...props}
       >
         {children}
