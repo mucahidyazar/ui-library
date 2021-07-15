@@ -2,23 +2,74 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _extends = require('@babel/runtime/helpers/extends');
-var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
 var React = require('react');
-var require$$0 = require('react-is');
+var _extends = require('@babel/runtime/helpers/extends');
 var styled = require('styled-components');
 var polished = require('polished');
+var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
+var require$$0 = require('react-is');
 var _slicedToArray = require('@babel/runtime/helpers/slicedToArray');
 var nonSecure = require('nanoid/non-secure');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends);
-var _objectWithoutProperties__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
+var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends);
 var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
+var _objectWithoutProperties__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);
+var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
 var _slicedToArray__default = /*#__PURE__*/_interopDefaultLegacy(_slicedToArray);
+
+var SECONDARY_COLOR = '#ced4da';
+var SECONDARY_TEXT_COLOR = '#000';
+var PRIMARY_COLOR = '#0a58ca';
+var DISABLED_OPACITY = 0.65;
+
+var nanoid = nonSecure.customAlphabet('123456789acdef', 10);
+var useUniqueID = function useUniqueID() {
+  var _useState = React.useState(nanoid()),
+      _useState2 = _slicedToArray__default['default'](_useState, 1),
+      id = _useState2[0];
+
+  return id;
+};
+
+var FieldContext = /*#__PURE__*/React.createContext(undefined);
+
+var StyledLabel = styled__default['default'].label.withConfig({
+  displayName: "style__StyledLabel",
+  componentId: "sc-1it1uc2-0"
+})(["font-weight:500;margin-bottom:0.4rem;"]);
+var StyledInput = styled__default['default'].input.withConfig({
+  displayName: "style__StyledInput",
+  componentId: "sc-1it1uc2-1"
+})(["display:block;width:100%;padding:0.5rem 0.4rem;font-size:1rem;line-height:1.5;color:", ";background-color:transparent;border:1px solid ", ";appearance:none;border-radius:0;transition:all 0.15s ease-in-out;&:focus{outline:none;border-color:", ";box-shadow:0 0 0 0.2rem ", ";}&:disabled{background-color:", ";opacity:", ";}"], SECONDARY_TEXT_COLOR, SECONDARY_COLOR, PRIMARY_COLOR, polished.transparentize(0.75, PRIMARY_COLOR), SECONDARY_COLOR, DISABLED_OPACITY);
+var StyledTextarea = styled__default['default'](StyledInput).attrs({
+  as: 'textarea'
+}).withConfig({
+  displayName: "style__StyledTextarea",
+  componentId: "sc-1it1uc2-2"
+})(["resize:", ";"], function (props) {
+  return !props.isResizable && 'none';
+});
+
+var Label = /*#__PURE__*/React__default['default'].forwardRef(function (props, ref) {
+  var id = React.useContext(FieldContext);
+  return /*#__PURE__*/React__default['default'].createElement(StyledLabel, _extends__default['default']({
+    ref: ref,
+    htmlFor: id
+  }, props));
+});
+Label.displayName = 'Field.Label';
+
+var Input = /*#__PURE__*/React__default['default'].forwardRef(function (props, ref) {
+  var id = React.useContext(FieldContext);
+  return /*#__PURE__*/React__default['default'].createElement(StyledInput, _extends__default['default']({
+    ref: ref,
+    id: id
+  }, props));
+});
+Input.displayName = 'Field.Input';
 
 var propTypes = {exports: {}};
 
@@ -896,129 +947,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 var PropTypes = propTypes.exports;
 
-var SECONDARY_COLOR = '#ced4da';
-var SECONDARY_TEXT_COLOR = '#000';
-var PRIMARY_COLOR = '#0a58ca';
-var PRIMARY_TEXT_COLOR = '#fff';
-var DANGER_COLOR = '#dc3545';
-var DANGER_TEXT_COLOR = '#fff';
-var DISABLED_OPACITY = 0.65;
-
-var nanoid = nonSecure.customAlphabet('123456789acdef', 10);
-var useUniqueID = function useUniqueID() {
-  var _useState = React.useState(nanoid()),
-      _useState2 = _slicedToArray__default['default'](_useState, 1),
-      id = _useState2[0];
-
-  return id;
-};
-
-var colorStyles = function colorStyles(p) {
-  var color = SECONDARY_TEXT_COLOR,
-      backgroundColor = SECONDARY_COLOR;
-
-  if (p.variant === 'primary') {
-    color = PRIMARY_TEXT_COLOR;
-    backgroundColor = PRIMARY_COLOR;
-  } else if (p.variant === 'danger') {
-    color = DANGER_TEXT_COLOR;
-    backgroundColor = DANGER_COLOR;
-  }
-
-  return styled.css(["color:", ";background-color:", ";border-color:", ";&:focus-visible{border-color:", ";box-shadow:0 0 0 0.2rem ", ";}"], color, backgroundColor, backgroundColor, color, polished.transparentize(0.45, backgroundColor));
-};
-
-var StyledButton = styled__default['default'].button.withConfig({
-  displayName: "style__StyledButton",
-  componentId: "sc-1dp6wyb-0"
-})(["cursor:pointer;display:", ";width:", ";font-weight:400;text-align:center;vertical-align:middle;user-select:none;border:1px solid transparent;padding:", ";font-size:", ";line-height:1.5;border-radius:0;transition:all 0.15s ease-in-out;", " &:focus{outline:0;}&:disabled{cursor:inherit;opacity:", ";}"], function (p) {
-  return p.isFullWidth ? 'block' : 'inline-block';
-}, function (p) {
-  return p.isFullWidth && '100%';
-}, function (p) {
-  if (p.size === 'large') {
-    return '0.5rem 1rem';
-  } else if (p.size === 'small') {
-    return '0.25rem 0.5rem';
-  }
-
-  return '0.4rem 0.75rem';
-}, function (p) {
-  if (p.size === 'large') {
-    return '1.25rem';
-  } else if (p.size === 'small') {
-    return '0.875rem';
-  }
-
-  return '1rem';
-}, colorStyles, DISABLED_OPACITY);
-
-var _excluded$1 = ["children", "variant", "size", "isFullWidth"];
-var Button = /*#__PURE__*/React__default['default'].forwardRef(function (_ref, ref) {
-  var children = _ref.children,
-      variant = _ref.variant,
-      size = _ref.size,
-      isFullWidth = _ref.isFullWidth,
-      props = _objectWithoutProperties__default['default'](_ref, _excluded$1);
-
-  return /*#__PURE__*/React__default['default'].createElement(StyledButton, _extends__default['default']({
-    ref: ref,
-    variant: variant,
-    size: size,
-    isFullWidth: isFullWidth,
-    type: "button"
-  }, props), children);
-});
-Button.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-  variant: PropTypes.oneOf(['secondary', 'primary', 'danger']),
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  isFullWidth: PropTypes.bool
-};
-Button.defaultProps = {
-  variant: 'secondary',
-  size: 'medium',
-  isFullWidth: false
-};
-Button.displayName = 'Button';
-
-var FieldContext = /*#__PURE__*/React.createContext(undefined);
-
-var StyledLabel = styled__default['default'].label.withConfig({
-  displayName: "style__StyledLabel",
-  componentId: "sc-1it1uc2-0"
-})(["font-weight:500;margin-bottom:0.4rem;"]);
-var StyledInput = styled__default['default'].input.withConfig({
-  displayName: "style__StyledInput",
-  componentId: "sc-1it1uc2-1"
-})(["display:block;width:100%;padding:0.5rem 0.4rem;font-size:1rem;line-height:1.5;color:", ";background-color:transparent;border:1px solid ", ";appearance:none;border-radius:0;transition:all 0.15s ease-in-out;&:focus{outline:none;border-color:", ";box-shadow:0 0 0 0.2rem ", ";}&:disabled{background-color:", ";opacity:", ";}"], SECONDARY_TEXT_COLOR, SECONDARY_COLOR, PRIMARY_COLOR, polished.transparentize(0.75, PRIMARY_COLOR), SECONDARY_COLOR, DISABLED_OPACITY);
-var StyledTextarea = styled__default['default'](StyledInput).attrs({
-  as: 'textarea'
-}).withConfig({
-  displayName: "style__StyledTextarea",
-  componentId: "sc-1it1uc2-2"
-})(["resize:", ";"], function (props) {
-  return !props.isResizable && 'none';
-});
-
-var Label = /*#__PURE__*/React__default['default'].forwardRef(function (props, ref) {
-  var id = React.useContext(FieldContext);
-  return /*#__PURE__*/React__default['default'].createElement(StyledLabel, _extends__default['default']({
-    ref: ref,
-    htmlFor: id
-  }, props));
-});
-Label.displayName = 'Field.Label';
-
-var Input = /*#__PURE__*/React__default['default'].forwardRef(function (props, ref) {
-  var id = React.useContext(FieldContext);
-  return /*#__PURE__*/React__default['default'].createElement(StyledInput, _extends__default['default']({
-    ref: ref,
-    id: id
-  }, props));
-});
-Input.displayName = 'Field.Input';
-
 var _excluded = ["isResizable"];
 var Textarea = /*#__PURE__*/React__default['default'].forwardRef(function (_ref, ref) {
   var isResizable = _ref.isResizable,
@@ -1050,7 +978,6 @@ Field.Label = Label;
 Field.Input = Input;
 Field.Textarea = Textarea;
 
-exports.Button = Button;
 exports.Field = Field;
 exports.Input = Input;
 exports.Label = Label;
