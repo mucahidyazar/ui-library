@@ -28,7 +28,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "semantic-release": "semantic-release --branches main",
+    "semantic-release": "semantic-release",
     "commit": "git-cz",
     "cra:start": "react-scripts start",
     "cra:build": "react-scripts build",
@@ -129,15 +129,25 @@
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
-      ["@semantic-release/release-notes-generator", {
-        "preset": "angular",
-        "parserOpts": {
-          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
-        },
-        "writerOpts": {
-          "commitsSort": ["subject", "scope"]
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "angular",
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          },
+          "writerOpts": {
+            "commitsSort": [
+              "subject",
+              "scope"
+            ]
+          }
         }
-      }],
+      ],
       "@semantic-release/npm",
       [
         "@semantic-release/changelog",
@@ -155,6 +165,5 @@
       ]
     ],
     "preset": "angular"
-    ]
   }
 }
